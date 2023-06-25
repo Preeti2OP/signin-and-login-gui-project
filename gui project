@@ -1,0 +1,87 @@
+from tkinter import*
+import tkinter as tk
+root=tk.Tk()
+root.geometry('500x550')
+root.config(bg="black")
+l=tk.Label(root, text='Greak for Greak',font=('Times',30),bg='lightgreen').place(x=150,y=70)
+def login():
+    top=Toplevel(root)
+    top.geometry('250x200')
+    top.config(bg='white')
+    Label(top, text='UserName').grid(row=0)
+    Label(top,text='Password').grid(row=1)
+    Username=StringVar()
+    Password=StringVar()
+    e1 = Entry(top)
+    e2 = Entry(top,textvariable=Password,show='*')
+    e1.grid(row=0, column=1)
+    e2.grid(row=1, column=1)
+    def lg():
+          username='usunil281@gmail.com' 
+          password='1234'
+          if e1.get()==username and e2.get()==password: 
+             Label(top,text="Login Successful! You successfully logged in.",bg='green').place(x=10,y=90)
+          else:
+             Label(top,text="Error Invalid login.",bg='red').place(x=10,y=90)
+
+
+    Button(top,text='login',command=lg).grid(row=2,column=1)
+    Button(top,text='clear',command=top.quit).grid(row=2,column=2)
+Button(root,text='Login',font=('Times',15),bg='lightblue',command=login).place(x=200,y=200)
+def reg():
+   Label(root,text='registered succesfuly!!',bg='white',font=('Times',15)).place(x=200,y=300)
+def sign_in():
+     top=Toplevel(root)
+     top.geometry('400x250')
+     Label(top, text='First Name').grid(row=0)
+     Label(top, text='Last Name').grid(row=1)
+     Label(top,text='Gender').grid(row=2)
+     Label(top,text='UserName').grid(row=6)
+     Label(top,text='Password').grid(row=7)
+     FirstName=StringVar()
+     LastName=StringVar()
+     e1 = Entry(top,textvariable=FirstName)
+     e2 = Entry(top,textvariable=LastName)
+     var=tk.IntVar()
+     val=var.get()
+     tk.Radiobutton(top,text='Male',variable=var,val=1).grid(row=2,column=1)
+     tk.Radiobutton(top,text='Female',variable=var,val=2).grid(row=2,column=2)
+     tk.Radiobutton(top,text='Other',variable=var,val=3).grid(row=2,column=3)
+     Button(top,text='Sigin ',bg='white',command=reg).grid(row=8,column=1)
+     Button(top,text='clear',command=top.quit).grid(row=8,column=2)
+     username=StringVar()
+     password=StringVar()
+     e3=Entry(top,textvariable=username)
+     e4=Entry(top,textvariable=password,show="*")
+     e1.grid(row=0, column=1)
+     e2.grid(row=1, column=1)
+     e3.grid(row=6,column=1)
+     e4.grid(row=7,column=1)
+Button(root,text='sign in',font=('Times',15),bg='lightblue',command=sign_in).place(x=200,y=250)
+menu = Menu(root)
+root.config(menu=menu)
+filemenu = Menu(menu)
+menu.add_cascade(label='Menu', menu=filemenu)
+def language():
+  top=Toplevel(root)
+  Label(top,text='Python').grid(row=0)
+  Label(top,text='C').grid(row=1)
+  Label(top,text='C++').grid(row=2)
+  Label(top,text='java').grid(row=3)
+filemenu.add_command(label='lanuage',command=language)
+def course():
+  top=Toplevel(root)
+  Label(top,text='Frontend devloper').grid(row=0)
+  Label(top,text='Backend devloper').grid(row=1)
+  Label(top,text='Fullstack devloper').grid(row=2)
+filemenu.add_command(label='Course',command=course)
+def help():
+   top=Toplevel(root)
+   Label(top, text='contact on website https://www.geeksforgeeks.org/').grid(row=0)
+filemenu.add_separator()
+filemenu.add_command(label='Exit', command=root.quit)
+helpmenu = Menu(menu)
+menu.add_cascade(label='Help', command=help)
+helpmenu.add_command(label='About')
+root.mainloop()
+
